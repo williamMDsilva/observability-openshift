@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hexagonal-arch-poc-go-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hexagonal-arch-poc-go
+  template:
+    metadata:
+      labels:
+        app: hexagonal-arch-poc-go
+    spec:
+      containers:
+        - name: hexagonal-arch-poc-go
+          image: hexagonal-arch-poc-go:latest
+          # just to running local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
